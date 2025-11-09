@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>We The People — Documentation, Research, and Identification</title>
+  <meta name="description" content="We The People — Secure initiative for documenting and researching online threats, groups, and behavioral patterns." />
+
+  <!-- Tab icon / favicon -->
+  <link rel="icon" type="image/svg+xml" href="wtp.svg" />
+  <link rel="alternate icon" href="wtp.svg" />
+
+  <style>
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #aaa;
+      --border: rgba(255,255,255,0.08);
+      --highlight: rgba(255,255,255,0.03);
+      --radius: 12px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: var(--bg); color: var(--fg); line-height: 1.6; }
+
+    header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo img {
+      width: 90px; /* logo size */
+      height: auto;
+      opacity: 0.95;
+    }
+
+    .logo-text {
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 1.3rem;
+    }
+
+    nav a {
+      color: var(--fg);
+      text-decoration: none;
+      margin-left: 1.8rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    nav a:hover { opacity: 1; }
+
+    main {
+      padding: 4rem 2rem;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    .hero {
+      margin-bottom: 4rem;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--fg);
+      padding-left: 0.8rem;
+    }
+    .hero p {
+      color: var(--muted);
+      max-width: 640px;
+      font-size: 1.1rem;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      border-left: 3px solid var(--fg);
+      padding-left: 0.6rem;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: var(--highlight);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255,255,255,0.05);
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header { flex-direction: column; align-items: flex-start; }
+      nav a { margin-left: 0; margin-right: 1.5rem; display: inline-block; }
+      .hero h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="wtp print.svg" alt="We The People logo">
+      <span class="logo-text">We The People</span>
+    </div>
+    <nav>
+      <a href="#documentation">Documentation</a>
+      <a href="#research">Research</a>
+      <a href="#identification">Identification</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Documentation. Research. Identification.</h1>
+      <p><strong>We The People</strong> documents and analyzes online threats, groups, and digital behaviors. We investigate emerging patterns, maintain verified records, and identify coordinated activity across online spaces — protecting communities through research and insight.</p>
+    </section>
+
+    <section id="documentation">
+      <h2>Documentation</h2>
+      <p>We collect and verify evidence of digital threats, misinformation networks, and organized behavior. Each record is preserved using forensic and open-source methods for transparency and accuracy.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Incident Tracking</h3>
+          <p>Cataloging posts, interactions, and activities connected to misinformation or harassment campaigns.</p>
+        </div>
+        <div class="card">
+          <h3>Data Verification</h3>
+          <p>All data undergoes authenticity checks, timestamping, and context validation to ensure reliable documentation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <h2>Research</h2>
+      <p>We study behavioral and network patterns across digital platforms to reveal structures of influence and coordination. Our research supports both defensive strategy and public understanding.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Behavioral Analysis</h3>
+          <p>Tracing activity cycles, engagement patterns, and psychological levers used in online influence efforts.</p>
+        </div>
+        <div class="card">
+          <h3>Threat Intelligence</h3>
+          <p>Assessing emerging risks, organized groups, and narrative campaigns that may impact security and trust.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="identification">
+      <h2>Identification</h2>
+      <p>We identify digital entities and behavioral signatures linked to harmful or coordinated activity — using ethical, privacy-conscious methods grounded in research and verification.</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Digital Profiling</h3>
+          <p>Recognizing recurring behavioral traits and affiliations across multiple online platforms and contexts.</p>
+        </div>
+        <div class="card">
+          <h3>Integrity & Ethics</h3>
+          <p>Every identification process prioritizes transparency, accountability, and respect for privacy boundaries.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> We The People — Documentation • Research • Identification
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
